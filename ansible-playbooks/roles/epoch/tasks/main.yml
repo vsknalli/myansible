@@ -1,5 +1,0 @@
----
-- command: "date +%Y%m%d%H%M%S"
-  register: pl_mydate
-
-- debug: var=pl_mydate.stdout

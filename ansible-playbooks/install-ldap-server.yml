@@ -1,8 +1,0 @@
-#
-#About: This will install ldap
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - ldap-server

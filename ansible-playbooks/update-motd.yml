@@ -1,8 +1,0 @@
-#
-#This will update motd server, This can be used to broadcast important information
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - motd

@@ -1,8 +1,0 @@
-#
-#About: This will install linotp
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - linotp

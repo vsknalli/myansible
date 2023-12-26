@@ -1,9 +1,0 @@
-#
-#About: This will install glassfish
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - jdk
-  - glassfish

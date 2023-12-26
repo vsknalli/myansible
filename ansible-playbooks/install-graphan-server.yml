@@ -1,8 +1,0 @@
-#
-#About: This will install grafana-server
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - grafana-server

@@ -1,9 +1,0 @@
-#
-#About: This will delete a virtual machine in azure
-#
----
-- hosts: localhost
-  connection: local
-  gather_facts: True
-  roles:
-  - {role: delete-virtual-machine}

@@ -1,8 +1,0 @@
-#
-#About: This will install s3fs
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - s3fs

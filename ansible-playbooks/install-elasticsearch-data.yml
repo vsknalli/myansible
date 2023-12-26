@@ -1,8 +1,0 @@
-#
-#About: This will install elasticsearch-data
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - elasticsearch-data

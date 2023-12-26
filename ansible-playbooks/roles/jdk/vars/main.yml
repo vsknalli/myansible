@@ -1,2 +1,0 @@
----
-pl_jdk_version: "{{jdk_version|default('8')}}"

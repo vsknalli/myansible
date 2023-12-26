@@ -1,8 +1,0 @@
-#
-#About: This will install nginx-oauth
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - nginx-oauth

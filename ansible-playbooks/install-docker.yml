@@ -1,8 +1,0 @@
-#
-#About: This will install docker
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - docker

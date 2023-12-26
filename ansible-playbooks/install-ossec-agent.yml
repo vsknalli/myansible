@@ -1,8 +1,0 @@
-#
-#About: This will install ossec-agent
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - ossec-agent

@@ -1,9 +1,0 @@
-#
-#About: This will install mesos-slave
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - mesos
-  - mesos-slave

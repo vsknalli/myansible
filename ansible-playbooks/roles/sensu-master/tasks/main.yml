@@ -1,7 +1,0 @@
----
-- name: Gather ec2 facts
-  ec2_facts:
-  when: dc_env == "aws"
-
-- include: configure-rabbit-mq.yml
-- include: install-sensu.yml

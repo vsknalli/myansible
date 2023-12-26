@@ -1,3 +1,0 @@
----
-- name: Download oneops
-  git: repo=git@github.com:oneops/setup.git dest=/opt/oneops/setup accept_hostkey=yes force=yes

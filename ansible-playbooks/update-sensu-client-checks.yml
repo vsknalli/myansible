@@ -1,8 +1,0 @@
-#
-#This will update sensu checks
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - sensu-client-checks

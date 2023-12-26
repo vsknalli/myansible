@@ -1,8 +1,0 @@
-#
-#About: This will install filebeat
-#
----
-- hosts: '{{inventory}}'
-  become: yes
-  roles:
-  - filebeat
