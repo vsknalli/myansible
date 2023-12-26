@@ -1,0 +1,19 @@
+- hosts: all
+  vars:
+    - webpage: "sen.html"
+    - packageName: "httpd"
+    - service:
+  tasks:
+    - package: 
+        name: "{{ packageName }}" 
+        state: present
+
+    - copy:
+        src: "{{ webpage }}" 
+        dest: "/var/www/html"
+
+    - service:
+        name: "httpd"
+        state: started
+        enabled: true
+
