@@ -1,0 +1,21 @@
+
+
+ansible - GITHub - Tocken-  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
+
+ansible_all_ipv4_addresses
+ansible_architecture
+ansible_date_time
+ansible_default_ipv4
+ansible_devices.sda.partitions.sda2.size
+ansible_distribution
+ansible_domain
+ansible_memtotal_mb
+ansible_memfree_mb
+ansible_memfree_mb.free
+ansible_nodename
+ansible_os_family
+ansible_processor_cores
+ansible_swaptotal_mb
+ansible_system
+
+
