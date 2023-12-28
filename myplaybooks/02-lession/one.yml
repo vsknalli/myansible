@@ -1,0 +1,19 @@
+- hosts: all
+  vars:
+    - x: "httpd" 
+    - y: "/var/www/html"
+    - z: "sen.html"
+  tasks:
+    - package: 
+         name: "{{ x }}" 
+         state: present
+
+    - copy:
+         src: "{{ z }}"
+         dest: "{{ y }}"
+
+    - service:
+         name: "{{ x }}"
+         state: restarted
+
+

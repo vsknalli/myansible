@@ -1,0 +1,37 @@
+- hosts: all
+  vars:
+    - webPage: "sen.html"
+    - packageName: "httpd"
+    - documentDir: /var/www/lw
+  tasks:
+    - name: Installing package
+      package: 
+        name: "{{ packageName }}" 
+        state: present
+
+    - name: copying web source file
+      copy:
+        src: "{{ webpage }}" 
+        dest: "/var/www/html"
+
+    - name: create document directory
+      file: 
+        state: directory
+        path: "{{ documentDir }}"
+
+    - name: Create  new document directory
+      copy:
+        dest: "/etc/httpd/conf.d/my.conf"
+        content: "documentroot {{ documentDir }}\n"
+
+    - name: copying the web source httml file 
+      copy:
+        src: "{{ webPage }}"
+        dest: "{{ documentDir }}"
+
+    - name: Restart the service
+      service:
+        name: "httpd"
+        state: reloaded 
+        enabled: true
+

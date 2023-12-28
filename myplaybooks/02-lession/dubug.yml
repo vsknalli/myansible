@@ -1,0 +1,7 @@
+- hosts: all
+  vars:
+    - c: true 
+  tasks:
+    - debug:
+        msg: "I am Senthil kumar" 
+      when: c

@@ -1,0 +1,31 @@
+- hosts: all
+  vars:
+    - webPage: "sen.html"
+    - packageName: "httpd"
+    - documentDir: /var/www/lw
+  tasks:
+    - package: 
+        name: "{{ packageName }}" 
+        state: present
+
+    - copy:
+        src: "{{ webpage }}" 
+        dest: "/var/www/html"
+
+    - file: 
+        state: directory
+        path: "{{ documentDir }}"
+
+    - copy:
+        dest: "/etc/httpd/conf.d/my.conf"
+        content: "documentroot {{ documentDir }}\n"
+
+    - copy:
+        src: "{{ webPage }}"
+        dest: "{{ documentDir }}"
+
+    - service:
+        name: "httpd"
+        state: reloaded 
+        enabled: true
+

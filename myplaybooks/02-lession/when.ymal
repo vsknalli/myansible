@@ -1,0 +1,7 @@
+- hosts: all
+  vars:
+    - asasad: true 
+  tasks:
+    - debug:
+        msg: "i am saba"
+      when: asasad 

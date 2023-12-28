@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+  - name: Install web packages
+    package: 
+      name: "httpd"
+      state: present
+      when: ( ansible_os_family == "RedHat" ) and ( ansible_memfree_mb <= "100" )
