@@ -6,6 +6,7 @@ ansible_all_ipv4_addresses
 ansible_architecture
 ansible_date_time
 ansible_default_ipv4
+ansible_all_ipv4_addresses
 ansible_devices.sda.partitions.sda2.size
 ansible_distribution
 ansible_domain
@@ -15,7 +16,20 @@ ansible_memfree_mb.free
 ansible_nodename
 ansible_os_family
 ansible_processor_cores
-ansible_swaptotal_mb
 ansible_system
+ansible_swapfree_mb
+ansible_swaptotal_mb
+
+
+ansible_*_mb
+
+ansible 192.168.100.197 -m setup -a "filter=ansible_architecture"
+ansible 192.168.100.197 -m setup -a "filter=ansible_*_mb"
+ansible 192.168.100.197 -m setup -a "filter=*family*"
+
+
+
+
+
 
 
