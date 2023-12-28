@@ -1,0 +1,4 @@
+   neofetch --ascii_distro windows
+   neofetch --ascii_distro redhat
+
+neofetch --ascii_distro redhat | lolcat
