@@ -1,0 +1,19 @@
+
+
+
+1) Install httpd 
+yum install httpd -y 
+
+2) To install php 
+
+yum install php -y 
+
+3) cd /var/www/html 
+vi index.php
+<?php
+$d=cal_days_in_month(CAL_GREGORIAN,10,2005);
+echo "There was $d days in October 2005";
+?>
+
+4) To start and enable the service 
+systemctl enable httpd --now 
