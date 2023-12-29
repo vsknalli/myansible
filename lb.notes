@@ -10,10 +10,51 @@ yum install php -y
 
 3) cd /var/www/html 
 vi index.php
+--------------------------------
+<pre>
 <?php
+print_r($_SERVER);
 $d=cal_days_in_month(CAL_GREGORIAN,10,2005);
 echo "There was $d days in October 2005";
 ?>
+<pre>
+----------------------
+
+LB CONFIGURAION:
+================
+
+vi /etc/haprox/haproxy.conf
+frontend lb
+	bind *:8080
+	timeout client 10s
+	default_backend	myweb
+
+backend myweb
+	balance		roundrobin
+	timeout		connect  10s
+	timeout 	server 10s
+        server  	app1  192.168.100.61:80
+	server		app2  192.168.100.62:80
+	server		app3  192.168.100.63:80
+
 
 4) To start and enable the service 
 systemctl enable httpd --now 
+
+
+5) To start and enable the service 
+
+systemctl start httpd
+systemctl enable httpd
+
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+
+firewall-cmd --reload
+
+
+
+
+
+
+
+
