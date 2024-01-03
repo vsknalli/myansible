@@ -20,8 +20,8 @@ echo "There was $d days in October 2005";
 <pre>
 ----------------------
 
-LB CONFIGURAION:
-================
+Manual LB CONFIGURAION:
+======================
 
 vi /etc/haprox/haproxy.conf
 frontend lb
@@ -50,6 +50,124 @@ systemctl enable httpd
 firewall-cmd --zone=public --add-port=8080/tcp --permanent
 
 firewall-cmd --reload
+
+
+Automation with Ansible:
+========================
+-------------------------------
+[root@ansible-c lbcode]# cat haproxy.cfg.j2 
+frontend lb
+        bind *:8080
+        timeout client 10s
+        default_backend myweb
+
+backend myweb
+        balance         roundrobin
+        timeout         connect  10s
+        timeout         server 10s
+        server          app1  192.168.100.32:80
+        server          app2  192.168.100.33:80
+        server          app3  192.168.100.34:80
+-----------------------------
+[root@ansible-c lbcode]# cat index.php 
+<pre>
+<?php
+print_r($_SERVER);
+$d=cal_days_in_month(CAL_GREGORIAN,10,2005);
+echo "There was $d days in October 2005";
+?>
+<pre>
+---------------------------------------
+[root@ansible-c lbcode]# cat lb.yaml 
+- hosts: lb
+  tasks:
+  - name: Install haproxy package
+    package:
+       name: "haproxy"
+       state: present
+
+  - name: Configure haproxy
+    template: 
+       src: "haproxy.cfg.j2" 
+       dest: /etc/haproxy/haproxy.cfg
+
+  - name: Start the service
+    service:
+       name: "haproxy"
+       state: started
+       enabled: yes
+-------------------------------------------
+[root@ansible-c lbcode]# cat web.yml 
+- hosts: web
+  tasks:
+  - name: Install web package
+    package:
+       name: "httpd" 
+       state: present
+
+  - name: Install php package
+    package:
+       name: "php"
+       state: present
+
+  - name: deploy code of php
+    copy:
+       src: "index.php"
+       dest: "/var/www/html"
+
+  - name: Start services
+    service:
+       name: "httpd"
+       state: "started"  
+       enabled: yes 
+------------------------------------------------
+==================================================================================================
+
+ansible all -m lineinfile -a "path=/etc/motd line='These nodes are controlled by Ansible'" -b
+
+vi mode.j2
+welcome to {{ ansible_facts.hostname }}
+(IP Address: {{ ansible_facts.default_ipv4.address }} 
+
+This message is configure by Ansible
+--------------------------------------------------------
+Magic Variables:
+================
+- name: Example of magic variable
+  hosts: sen
+  tasks:
+     - name: Show variables
+       debug: 
+          msg: "{{ inventory_hostname }}"
+
+--------
+
+- name: Example of magic variable
+  hosts: sen
+  tasks:
+     - name: Show variables
+       debug: 
+          msg: "{{ inventory_hostname }}"
+
+     - name: Show inventory group details
+       debug:
+          msg: "{{ groups }}"
+-----------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
