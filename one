@@ -1,0 +1,13 @@
+k8smaster                 running (virtualbox)
+k8sworker1                running (virtualbox)
+jenkinsmaster             running (virtualbox)
+jenkinsslave              running (virtualbox)
+docker                    running (virtualbox)
+ansible                   running (virtualbox)
+node1                     running (virtualbox)
+node2                     running (virtualbox)
+node3                     running (virtualbox)
+node4                     running (virtualbox)
+node5                     running (virtualbox)
+k8sworker2                running (virtualbox)
+
